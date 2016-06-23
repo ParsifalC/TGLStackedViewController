@@ -28,8 +28,22 @@
 #import "TGLStackedLayout.h"
 #import "TGLExposedLayout.h"
 
-@interface TGLStackedViewController : UICollectionViewController
+typedef enum : NSUInteger {
+    TGLTransitionBeginToExpose,
+    TGLTransitionFinishToExpose,
+    TGLTransitionFailToExpose,
+    TGLTransitionBeginToUnexpose,
+    TGLTransitionFinishToUnexpose,
+    TGLTransitionFailToUnexpose,
+} TGLTransitionStatus;
 
+@protocol TGLStackedViewControllerProtocol <NSObject>
+@optional
+- (void)transitionStatus:(TGLTransitionStatus)status cell:(nullable UICollectionViewCell *)cell;
+@end
+
+@interface TGLStackedViewController : UICollectionViewController
+@property (weak, nonatomic, nullable) id<TGLStackedViewControllerProtocol> delegate;
 /** The collection view layout object used when all items are collapsed.
  *
  * When using storyboards, this property is only intialized in method
