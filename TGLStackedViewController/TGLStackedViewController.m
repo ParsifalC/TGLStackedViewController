@@ -160,7 +160,6 @@
 #pragma mark - Actions
 
 - (IBAction)handleMovePressGesture:(UILongPressGestureRecognizer *)recognizer {
-    return;
     static CGPoint startLocation;
     static CGPoint targetPosition;
     
@@ -236,7 +235,6 @@
 }
 
 - (IBAction)handleCollapsePanGesture:(UIPanGestureRecognizer *)recognizer {
-    return;
     static UICollectionViewTransitionLayout *transitionLayout;
     static CGFloat transitionMaxThreshold;
     static CGFloat transitionMinThreshold;
@@ -317,7 +315,6 @@
 }
 
 - (IBAction)handleCollapsePinchGesture:(UIPinchGestureRecognizer *)recognizer {
-    return;
     static UICollectionViewTransitionLayout *transitionLayout;
     static CGFloat transitionMinThreshold;
     
