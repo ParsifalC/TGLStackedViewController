@@ -516,7 +516,7 @@
         UICollectionViewCell *exposedCell = [self.collectionView cellForItemAtIndexPath:self.exposedItemIndexPath];
         
         if ([self.delegate respondsToSelector:@selector(transitionStatus:cell:)]) {
-            [self.delegate transitionStatus:TGLTransitionBeginToUnexpose cell:exposedCell];
+            [self.delegate transitionStatus:TGLTransitionBeginToCollapse cell:exposedCell];
         }
         
         [self removeCollapseGestureRecognizersFromView:exposedCell];
@@ -530,7 +530,7 @@
         [self.collectionView setCollectionViewLayout:self.stackedLayout animated:YES completion:^ (BOOL finished) {
             weakSelf.stackedLayout.overwriteContentOffset = NO;
             if ([weakSelf.delegate respondsToSelector:@selector(transitionStatus:cell:)]) {
-                [weakSelf.delegate transitionStatus:TGLTransitionFinishToUnexpose cell:exposedCell];
+                [weakSelf.delegate transitionStatus:TGLTransitionFinishToCollapse cell:exposedCell];
             }
         }];
     }

@@ -32,9 +32,9 @@ typedef enum : NSUInteger {
     TGLTransitionBeginToExpose,
     TGLTransitionFinishToExpose,
     TGLTransitionFailToExpose,
-    TGLTransitionBeginToUnexpose,
-    TGLTransitionFinishToUnexpose,
-    TGLTransitionFailToUnexpose,
+    TGLTransitionBeginToCollapse,
+    TGLTransitionFinishToCollapse,
+    TGLTransitionFailToCollapse,
 } TGLTransitionStatus;
 
 @protocol TGLStackedViewControllerProtocol <NSObject>
