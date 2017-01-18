@@ -79,6 +79,7 @@
         _stackedTopReveal = 120.0;
         _stackedBounceFactor = 0.2;
         _stackedFillHeight = NO;
+        _stackedCenterSingleItem = NO;
         _stackedAlwaysBounce = NO;
     }
     
@@ -119,7 +120,8 @@
     backgroundProxy.hidden = self.collectionViewBackground.hidden;
     
     self.collectionView.backgroundView = backgroundProxy;
-    
+    self.collectionView.showsVerticalScrollIndicator = self.showsVerticalScrollIndicator;
+
     self.exposedItemSize = self.cardSize;
 
     self.stackedLayout.itemSize = self.exposedItemSize;
@@ -127,6 +129,7 @@
     self.stackedLayout.topReveal = self.stackedTopReveal;
     self.stackedLayout.bounceFactor = self.stackedBounceFactor;
     self.stackedLayout.fillHeight = self.stackedFillHeight;
+    self.stackedLayout.centerSingleItem = self.stackedCenterSingleItem;
     self.stackedLayout.alwaysBounce = self.stackedAlwaysBounce;
 
     if (self.doubleTapToClose) {
@@ -143,6 +146,16 @@
 - (void)viewDidAppear:(BOOL)animated {
 
     [super viewDidAppear:animated];
+    
+    if (!self.collectionViewBackground.hidden) {
+
+        // KLUDGE: Make collection view transparent
+        //         to let background view show through
+        //
+        // See also: -viewDidLoad
+        //
+        self.collectionView.backgroundColor = [UIColor clearColor];
+    }
     
     if (self.doubleTapToClose) {
         

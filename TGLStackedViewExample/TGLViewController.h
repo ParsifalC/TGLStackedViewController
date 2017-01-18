@@ -30,6 +30,7 @@
 @interface TGLViewController : TGLStackedViewController
 
 @property (nonatomic, assign) BOOL showsBackgroundView;
+@property (nonatomic, assign) BOOL showsVerticalScrollIndicator;
 
 @property (nonatomic, assign) NSInteger cardCount;
 @property (nonatomic, assign) CGSize cardSize;
@@ -38,6 +39,7 @@
 @property (nonatomic, assign) CGFloat stackedTopReveal;
 @property (nonatomic, assign) CGFloat stackedBounceFactor;
 @property (nonatomic, assign) BOOL stackedFillHeight;
+@property (nonatomic, assign) BOOL stackedCenterSingleItem;
 @property (nonatomic, assign) BOOL stackedAlwaysBounce;
 
 @property (nonatomic, assign) BOOL doubleTapToClose;

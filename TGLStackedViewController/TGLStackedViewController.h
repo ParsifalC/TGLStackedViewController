@@ -151,15 +151,21 @@ typedef enum : NSUInteger {
 
 /** Index path of currently exposed item.
  *
- * The exposed item's selected state is `YES`.
- *
- * When user exposes an item this property
+ * When the user exposes an item this property
  * contains the item's index path. The value
  * is nil if no item is exposed.
  *
  * Set this property to a valid item index path
- * location to expose it, instead of the current
+ * location to expose it instead of the current
  * one, or set to nil to collapse all items.
+ *
+ * The exposed item's selected state is `YES`.
+ *
+ * The layout transition is animated. If no animation
+ * is required call `-setExposedItemIndexPath:animated:`
+ * instead.
+ *
+ * @see -setExposedItemIndexPath:animated:
  */
 @property (nonatomic, strong, nullable) NSIndexPath *exposedItemIndexPath;
 
@@ -186,11 +192,17 @@ typedef enum : NSUInteger {
  */
 @property (nonatomic, assign) IBInspectable BOOL unexposedItemsAreSelectable;
 
-/** Factor used to scale items while moving them.
+/** Factor used to scale items while being moved interactively.
  *
  * Default value is 0.95
  */
 @property (nonatomic, assign) IBInspectable CGFloat movingItemScaleFactor;
+
+/** Allow item being moved interactively to float above of all other items.
+ *
+ * Default value is `YES`
+ */
+@property (nonatomic, assign) IBInspectable BOOL movingItemOnTop;
 
 /** Minimum amount of downwards panning at end of gesture to trigger collapse.
  *
@@ -220,5 +232,19 @@ typedef enum : NSUInteger {
  * and return your subclass.
  */
 + (nonnull Class)exposedLayoutClass;
+
+/** Sets the currently exposed item.
+ *
+ * Expose the item at a valid index path location
+ * instead of the current one, or pass to `nil`
+ * to collapse all items.
+ *
+ * The resulting layout transition may be animated.
+ *
+ * The exposed item's selected state is `YES`.
+ *
+ * @see -exposedItemIndexPath
+ */
+- (void)setExposedItemIndexPath:(nullable NSIndexPath *)exposedItemIndexPath animated:(BOOL)animated;
 
 @end
